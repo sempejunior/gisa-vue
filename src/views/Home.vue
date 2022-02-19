@@ -1,15 +1,15 @@
 <template>
-  <hello-world />
+  <home-gisa />
 </template>
 
 <script>
-  import HelloWorld from '../components/HomeGisa'
+  import HomeGisa from '../components/HomeGisa'
 
   export default {
     name: 'Home',
 
     components: {
-      HelloWorld,
+      HomeGisa,
     },
   }
 </script>

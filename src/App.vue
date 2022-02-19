@@ -3,7 +3,6 @@
     <v-app-bar app color="black" dark>
       <div class="d-flex align-center">
         <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-
         <v-toolbar-title>GISA</v-toolbar-title>
         <v-spacer></v-spacer>
       </div>
@@ -20,9 +19,11 @@
           <v-icon>mdi-login</v-icon>
         </v-btn>
         <div v-if="$auth.isAuthenticated">
-          <v-avatar color="red">
-            <img :src="$auth.user.picture" :alt="$auth.user.given_name" />
-          </v-avatar>
+          <a @click="directToUrl('/profile')">
+            <v-avatar color="red">
+              <img :src="$auth.user.picture" :alt="$auth.user.given_name" />
+            </v-avatar>
+          </a>
 
           <v-btn @click="logout" text>
             <span class="mr-2">Logout</span>
@@ -38,14 +39,14 @@
           v-model="group"
           active-class="deep-purple--text text--accent-4"
         >
-          <v-list-item>
+          <v-list-item @click="directToUrl('/')">
             <v-list-item-icon>
               <v-icon>mdi-home</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item>
 
-          <v-list-item>
+          <v-list-item @click="directToUrl('/profile')">
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
@@ -79,7 +80,6 @@ export default {
         console.log(error);
         alert("Você precisa validar seu email!");
       }
-      
     },
     // Log the user out
     logout() {
@@ -87,6 +87,9 @@ export default {
         returnTo: window.location.origin,
       });
       alert("Você foi deslogado!");
+    },
+    directToUrl(url) {
+     this.$router.push(url);
     },
   },
 };
