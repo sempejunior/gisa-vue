@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Navbar from '../views/Navbar.vue'
 import Profile from "../views/Profile.vue"
 import ProfileValues from "../views/ProfileValues.vue"
 import { authGuard } from "../auth/authGuard"
@@ -13,11 +12,6 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
-  },
-  {
-    path: '/navbar',
-    name: 'Navbar',
-    component: Navbar
   },
   {
     path: '/about',

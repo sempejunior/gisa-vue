@@ -52,6 +52,46 @@
             </v-list-item-icon>
             <v-list-item-title>Account</v-list-item-title>
           </v-list-item>
+          <div v-if="$auth.isAuthenticated">
+            <div
+              v-if="$auth.user['http:user'].user_metadata.role == 'conveniados'"
+            >
+              <v-list-item @click="directToUrl('/profile')">
+                <v-list-item-icon>
+                  <v-icon>mdi-account-group</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title
+                  >Gerenciamento de prestadores</v-list-item-title
+                >
+              </v-list-item>
+            </div>
+          </div>
+
+          <div v-if="$auth.isAuthenticated">
+            <div
+              v-if="$auth.user['http:user'].user_metadata.role == 'prestador'"
+            >
+              -->
+              <v-list-item @click="directToUrl('/profile')">
+                <v-list-item-icon>
+                  <v-icon>mdi-calendar-check</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title>Gerenciamento de agenda</v-list-item-title>
+              </v-list-item>
+            </div>
+          </div>
+          <div v-if="$auth.isAuthenticated">
+            <div
+              v-if="$auth.user['http:user'].user_metadata.role == 'associado'"
+            >
+              <v-list-item @click="directToUrl('/profile')">
+                <v-list-item-icon>
+                  <v-icon>mdi-account-card-details</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title>Gerenciar Planos</v-list-item-title>
+              </v-list-item>
+            </div>
+          </div>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -69,7 +109,15 @@ export default {
   data: () => ({
     drawer: false,
     group: null,
-    icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
+    icons: [
+      "mdi-facebook",
+      "mdi-twitter",
+      "mdi-linkedin",
+      "mdi-instagram",
+      "mdi-calendar-check",
+      "mdi-account-card-details",
+      "mdi-account-group",
+    ],
   }),
   methods: {
     // Log the user in
@@ -89,7 +137,7 @@ export default {
       alert("Você foi deslogado!");
     },
     directToUrl(url) {
-     this.$router.push(url);
+      this.$router.push(url);
     },
   },
 };
