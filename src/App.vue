@@ -54,7 +54,7 @@
           </v-list-item>
           <div v-if="$auth.isAuthenticated">
             <div
-              v-if="$auth.user['http:user'].user_metadata.role == 'conveniados'"
+              v-if="$auth.user['http:user'].user_metadata.role == 'conveniado'"
             >
               <v-list-item @click="directToUrl('/profile')">
                 <v-list-item-icon>
